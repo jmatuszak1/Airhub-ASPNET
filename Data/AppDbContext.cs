@@ -18,6 +18,9 @@ namespace Airhub.Data
             modelBuilder.Entity<Passenger>().HasKey(sc => new { sc.CustomerId, sc.FlightId });
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlite("Data Source=airhub.db");
+
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Flight> Flights { get; set; }
