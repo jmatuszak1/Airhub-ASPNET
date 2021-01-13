@@ -1,0 +1,21 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+.bg-image {
+    background-image: url('~/lib/img/clouds.jpg');
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.home-site {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
