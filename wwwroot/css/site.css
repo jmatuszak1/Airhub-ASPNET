@@ -3,19 +3,29 @@
 }
 
 .bg-image {
-    background-image: url('~/lib/img/clouds.jpg');
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+    position: absolute;
+    background-image: url('../lib/img/clouds.jpg');
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     z-index: -1;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-div.home-site {
+.wrapper {
     margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
