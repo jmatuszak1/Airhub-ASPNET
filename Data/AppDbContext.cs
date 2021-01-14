@@ -13,6 +13,10 @@ namespace Airhub.Data
         {
         }
 
+        public AppDbContext()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Passenger>().HasKey(sc => new { sc.CustomerId, sc.FlightId });
