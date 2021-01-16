@@ -20,6 +20,10 @@ namespace Airhub.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Passenger>().HasKey(sc => new { sc.CustomerId, sc.FlightId });
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Cascade;
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

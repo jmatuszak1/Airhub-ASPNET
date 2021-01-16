@@ -1,0 +1,42 @@
+﻿@using Plane = System.Numerics.Plane
+
+@*<form asp-action="FindFlightsByDepartureCity" method="post" class="flightSearchingForm">
+        <label>Departure city</label>
+        <input class="input-label" type="text" name="departureCity" />
+        <input type="submit" value="Search" />
+    </form>
+
+    <form asp-action="FindFlightsByArrivalCity" method="post" class="flightSearchingForm">
+        <label>Arrival city</label>
+        <input class="input-label" type="text" name="arrivalCity" />
+        <input type="submit" value="Search" />
+    </form>
+
+    <form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm">
+        <label>Departure Date</label>
+        <input class="input-label" type="date" name="departureDate" />
+        <input type="submit" value="Search" />
+    </form>*@
+
+<table class="table">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Seats</td>
+        <td>Delete</td>
+    </tr>
+
+    @foreach (var plane in Model)
+    {
+        <tr>
+            <td>@plane.Id</td>
+            <td>@plane.Name</td>
+            <td>@plane.Seats</td>
+            <td>
+                <a class="btn btn-danger" asp-controller="PlaneManagement" asp-action="deletePlane"
+                   asp-route-id="@plane.Id">🗑️</a>
+                @*<input type="button" value="Delete" onclick="deletePlane(planeId)"/>*@
+            </td>
+        </tr>
+    }
+</table>

@@ -1,4 +1,23 @@
-﻿<table class="table">
+﻿
+<form asp-action="FindFlightsByDepartureCity" method="post" class="flightSearchingForm">
+    <label>Departure city</label>
+    <input class="input-label" type="text" name="departureCity"/>
+    <input type="submit" value="Search"/>
+</form>
+
+<form asp-action="FindFlightsByArrivalCity" method="post" class="flightSearchingForm">
+    <label>Arrival city</label>
+    <input class="input-label" type="text" name="arrivalCity"/>
+    <input type="submit" value="Search" />
+</form>
+
+<form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm">
+    <label>Departure Date</label>
+    <input class="input-label" type="date" name="departureDate" />
+    <input type="submit" value="Search" />
+</form>
+
+<table class="table">
     <tr>
         <td>Id</td>
         <td>Departure City</td>
@@ -8,6 +27,7 @@
         <td>Max Seats</td>
         <td>Occupied Seats</td>
     </tr>
+
     @foreach (var flight in Model)
     {
         <tr>

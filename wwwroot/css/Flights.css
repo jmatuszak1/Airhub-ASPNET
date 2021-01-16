@@ -1,0 +1,13 @@
+﻿.flightSearchingForm {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.flightSearchingForm label {
+    width: 120px;
+    display: inline-block
+}
+
+.input-label {
+    width: 200px;
+}
