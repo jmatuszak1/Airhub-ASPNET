@@ -1,0 +1,21 @@
+USE [Airhub]
+GO
+
+INSERT INTO [dbo].[Airports]
+           ([Name]
+           ,[City])
+     VALUES
+           ('Singapore Changi Airport', 'Singapore'),
+		   ('Incheon International Airport', 'Incheon'),
+		   ('Amsterdam Airport Schiphol', 'Amsterdam'),
+		   ('Copenhagen Airport', 'Copenhagen'),
+		   ('Stockholm Arlanda Airport', 'Stockholm'),
+		   ('London Heathrow Airport', 'London'),
+		   ('Munich Airport', 'Munich'),
+		   ('Hamad International Airport, Doha', 'Doha'),
+		   ('Hong Kong International Airport', 'Hong Kong'),
+		   ('O. R. Tambo International Airport, Johannesburg', 'Johannesburg'),
+		   ('London City Airport', 'London')
+GO
+
+

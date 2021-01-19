@@ -1,13 +1,13 @@
 ﻿
-<form asp-action="FindFlightsByDepartureCity" method="post" class="flightSearchingForm">
-    <label>Departure city</label>
-    <input class="input-label" type="text" name="departureCity"/>
+<form asp-action="FindFlightsByDepartureAirport" method="post" class="flightSearchingForm">
+    <label>Departure airport</label>
+    <input class="input-label" type="text" name="departureAirport"/>
     <input type="submit" value="Search"/>
 </form>
 
-<form asp-action="FindFlightsByArrivalCity" method="post" class="flightSearchingForm">
-    <label>Arrival city</label>
-    <input class="input-label" type="text" name="arrivalCity"/>
+<form asp-action="FindFlightsByArrivalAirport" method="post" class="flightSearchingForm">
+    <label>Arrival airport</label>
+    <input class="input-label" type="text" name="arrivalAirport"/>
     <input type="submit" value="Search" />
 </form>
 
@@ -20,8 +20,8 @@
 <table class="table">
     <tr>
         <td>Id</td>
-        <td>Departure City</td>
-        <td>Arrival City</td>
+        <td>Departure Airport</td>
+        <td>Arrival Airport</td>
         <td>Departure Date</td>
         <td>Arrival Date</td>
         <td>Max Seats</td>
@@ -32,8 +32,8 @@
     {
         <tr>
             <td>@flight.Id</td>
-            <td>@flight.DepartureCity.Name</td>
-            <td>@flight.ArrivalCity.Name</td>
+            <td>@flight.DepartureAirport.Name</td>
+            <td>@flight.ArrivalAirport.Name</td>
             <td>@flight.DepartureDate</td>
             <td>@flight.ArrivalDate</td>
             <td>@flight.MaxSeats</td>

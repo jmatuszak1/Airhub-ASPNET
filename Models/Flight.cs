@@ -12,11 +12,11 @@ namespace Airhub.Models
 
         [Required]
         [Display(Name = "Miasto wylotu")]
-        public Airport DepartureCity { get; set; }
+        public Airport DepartureAirport { get; set; }
 
         [Required]
         [Display(Name = "Miasto przylotu")]
-        public Airport ArrivalCity { get; set; }
+        public Airport ArrivalAirport { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]

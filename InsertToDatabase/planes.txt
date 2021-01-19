@@ -1,0 +1,17 @@
+USE [Airhub]
+GO
+
+INSERT INTO [dbo].[Planes]
+           ([Name]
+           ,[Seats])
+     VALUES
+           ('Boeing 247', 190),
+		   ('Douglas DC-3', 100),
+		   ('Douglas DC-6', 285),
+		   ('Boeing 377', 160),
+		   ('Vickers Viscount', 220),
+		   ('Lockheed Constellation', 240),
+		   ('Antonov An-2', 190),
+		   ('De Havilland Comet', 200),
+		   ('Tupolev Tu-104', 215);
+GO

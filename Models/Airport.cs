@@ -8,10 +8,6 @@ namespace Airhub.Models
     {
         public int Id { get; set; }
 
-        [StringLength(3), Required]
-        [RegularExpression("[A-Z]")]
-        public string IATA { get; set; }
-
         [MaxLength(64)]
         [Display(Name = "Nazwa")]
         public string Name { get; set; }
@@ -20,10 +16,10 @@ namespace Airhub.Models
         [Display(Name = "Miasto")]
         public string City { get; set; }
 
-        [InverseProperty("DepartureCity")]
+        [InverseProperty("DepartureAirport")]
         public IList<Flight> Departures { get; set; }
 
-        [InverseProperty("ArrivalCity")]
+        [InverseProperty("ArrivalAirport")]
         public IList<Flight> Arrivals { get; set; }
     }
 }
