@@ -13,21 +13,18 @@ namespace Airhub.Data
         {
         }
 
-        public AppDbContext()
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Passenger>().HasKey(sc => new { sc.CustomerId, sc.FlightId });
+            base.OnModelCreating(modelBuilder);
+
             foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
-                foreignKey.DeleteBehavior = DeleteBehavior.Cascade;
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=airhub.db");
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //    => options.UseSqlite("Data Source=airhub.db");
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Account> Accounts { get; set; }

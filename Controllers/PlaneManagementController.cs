@@ -9,9 +9,9 @@ namespace Airhub.Controllers
     {
         private AppDbContext _context;
 
-        public PlaneManagementController()
+        public PlaneManagementController(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
         protected override void Dispose(bool disposing)
@@ -28,7 +28,7 @@ namespace Airhub.Controllers
         
         public ActionResult deletePlane(int Id)
         {
-            _context.Planes.Remove(_context.Planes.FirstOrDefault(a => a.Id == Id));
+            _context.Planes.Remove(_context.Planes.Find(Id));
             _context.SaveChanges();
             return RedirectToAction("PlanesManagement");
         }
