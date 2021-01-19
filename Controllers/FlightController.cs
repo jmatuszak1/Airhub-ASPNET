@@ -15,9 +15,9 @@ namespace Airhub.Controllers
     {
         private AppDbContext _context;
 
-        public FlightController()
+        public FlightController(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
         protected override void Dispose(bool disposing)
