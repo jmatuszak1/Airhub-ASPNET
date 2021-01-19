@@ -33,5 +33,14 @@ namespace Airhub.Controllers
             return RedirectToAction("PlanesManagement");
         }
 
+        [HttpPost]
+        public ActionResult AddPlane(string name, int seats)
+        {
+            var plane = new Plane(name, seats);
+           _context.Add<Plane>(plane);
+            _context.SaveChanges();
+           return RedirectToAction("PlanesManagement");
+        }
+
     }
 }

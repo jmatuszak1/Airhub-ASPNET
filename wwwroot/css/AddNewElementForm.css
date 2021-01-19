@@ -1,0 +1,24 @@
+﻿.addForm {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 3px solid black;
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.addForm div label {
+        width: 120px;
+        display: inline-block
+}
+
+.input-label {
+    width: 200px;
+}
+
+.submitButton {
+    width: 80px;
+}
