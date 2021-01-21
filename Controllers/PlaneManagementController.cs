@@ -2,6 +2,8 @@
 using Airhub.Data;
 using Airhub.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Airhub.Controllers
 {
@@ -28,9 +30,16 @@ namespace Airhub.Controllers
         
         public ActionResult deletePlane(int Id)
         {
-            _context.Planes.Remove(_context.Planes.Find(Id));
-            _context.SaveChanges();
-            return RedirectToAction("PlanesManagement");
+            try
+            {
+                _context.Planes.Remove(_context.Planes.Find(Id));
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                return RedirectToAction("ErrorPlaneConstraint", _context.Planes.Find(Id));
+            }
+            return RedirectToAction("PlanesManagement", _context.Planes.Find(Id));
         }
 
         [HttpPost]
@@ -42,5 +51,10 @@ namespace Airhub.Controllers
            return RedirectToAction("PlanesManagement");
         }
 
+        [Route("errorPlaneConstraint")]
+        public ViewResult ErrorPlaneConstraint(Plane? plane)
+        {
+            return View(plane);
+        }
     }
 }

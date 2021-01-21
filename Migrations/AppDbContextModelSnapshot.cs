@@ -109,9 +109,6 @@ namespace Airhub.Migrations
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MaxSeats")
-                        .HasColumnType("int");
-
                     b.Property<int>("OccupiedSeats")
                         .HasColumnType("int");
 

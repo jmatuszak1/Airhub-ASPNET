@@ -1,0 +1,14 @@
+﻿.errorModelName {
+    font-weight: bolder;
+    color: red;
+    text-decoration: underline;
+}
+
+.goBackButton {
+    margin-top: 30px;
+}
+
+.goBackButton a {
+    color: black;
+    font-weight: bolder;
+}

@@ -76,7 +76,6 @@ namespace Airhub.Migrations
                     ArrivalAirportId = table.Column<int>(type: "int", nullable: false),
                     DepartureDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ArrivalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MaxSeats = table.Column<int>(type: "int", nullable: false),
                     OccupiedSeats = table.Column<int>(type: "int", nullable: false),
                     PlaneId = table.Column<int>(type: "int", nullable: true)
                 },
