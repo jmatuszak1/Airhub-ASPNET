@@ -1,43 +1,53 @@
-﻿
-<form asp-action="FindFlightsByDepartureCity" method="post" class="flightSearchingForm">
-    <label>Departure city</label>
-    <input class="input-label" type="text" name="departureCity"/>
-    <input type="submit" value="Search"/>
-</form>
+﻿@model IEnumerable<Airhub.Models.Flight>
 
-<form asp-action="FindFlightsByArrivalCity" method="post" class="flightSearchingForm">
-    <label>Arrival city</label>
-    <input class="input-label" type="text" name="arrivalCity"/>
-    <input type="submit" value="Search" />
-</form>
+@{
+    ViewData["Title"] = "Flights";
+}
 
-<form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm">
-    <label>Departure Date</label>
-    <input class="input-label" type="date" name="departureDate" />
-    <input type="submit" value="Search" />
-</form>
+<h1>Flights</h1>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
-    <tr>
-        <td>Id</td>
-        <td>Departure City</td>
-        <td>Arrival City</td>
-        <td>Departure Date</td>
-        <td>Arrival Date</td>
-        <td>Max Seats</td>
-        <td>Occupied Seats</td>
-    </tr>
-
-    @foreach (var flight in Model)
-    {
+    <thead>
         <tr>
-            <td>@flight.Id</td>
-            <td>@flight.DepartureCity.Name</td>
-            <td>@flight.ArrivalCity.Name</td>
-            <td>@flight.DepartureDate</td>
-            <td>@flight.ArrivalDate</td>
-            <td>@flight.MaxSeats</td>
-            <td>@flight.OccupiedSeats</td>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OccupiedSeats)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OccupiedSeats)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
 </table>
