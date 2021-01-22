@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Airhub.Validation;
+using System.Text;
 
 namespace Airhub.Models
 {
     public enum Gender
     {
-        MALE,
-        FEMALE,
-        OTHER
+        Male,
+        Female,
+        Other
     }
     public class Customer
     {
@@ -18,28 +20,30 @@ namespace Airhub.Models
 
         [Required]
         [MaxLength(64)]
-        [Display(Name = "Imię")]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required]
         [MaxLength(64)]
-        [Display(Name = "Nazwisko")]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "Data urodzenia")]
+        [Display(Name = "Date of birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Display(Name = "Płeć")]
+        [Display(Name = "Gender")]
         public Gender Gender { get; set; }
 
         [Required]
-        [RegularExpression("A-Za-z1-9")]
-        [Display(Name = "Numer dokumentu tożsamości")]
+        [Display(Name = "Document number")]
         public string DocumentNumber { get; set; }
 
         public IList<Passenger> UserFlights { get; set; }
+
+        public int AccountId { get; set; }
+        public Account Account { get; set; }
 
         //public byte[] PasswordHash { get; set; }
         //public byte[] PasswordSalt { get; set; }

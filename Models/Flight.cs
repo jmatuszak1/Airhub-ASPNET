@@ -40,6 +40,11 @@ namespace Airhub.Models
         [Display(Name = "Samolot")]
         public Plane Plane { get; set; }
 
+        internal object Where(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<Passenger> Passengers { get; set; }
     }
 }

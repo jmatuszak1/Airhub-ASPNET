@@ -32,6 +32,6 @@ namespace Airhub.Data
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Airport> Airports { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
-
+        public object Customer { get; internal set; }
     }
 }

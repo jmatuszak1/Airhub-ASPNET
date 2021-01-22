@@ -1,0 +1,13 @@
+USE [Airhub]
+GO
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[DateOfBirth]
+           ,[Gender]
+           ,[DocumentNumber]
+           ,[AccountId])
+     VALUES
+           ('Jan', 'Matuszak', '1995-07-20', 1, 'XXX909090',1);
+GO
