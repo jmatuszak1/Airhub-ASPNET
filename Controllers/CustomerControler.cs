@@ -29,14 +29,14 @@ namespace Airhub.Controllers
                 return NotFound();
             }
 
-            var joke = await _context.Customers
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (joke == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(joke);
+            return View(customer);
         }
         // GET: Customer/Edit/5
         public async Task<IActionResult> Edit(int id = 15)
