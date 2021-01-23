@@ -9,5 +9,9 @@ INSERT INTO [dbo].[Customers]
            ,[DocumentNumber]
            ,[AccountId])
      VALUES
-           ('Jan', 'Matuszak', '1995-07-20', 1, 'XXX909090',1);
+           ('Ala', 'Ala', '1995-07-20', 2, 'XXB909090',2),
+           ('Jan', 'Matuszak', '1995-07-20', 1, 'XXX909090',3),
+           ('Andrzej', 'Inny', '1994-08-21', 1, 'XXX609090',4),
+           ('Grzegorz', 'Zbigniew', '1990-05-10', 1, 'XXX905678',5);
+
 GO
