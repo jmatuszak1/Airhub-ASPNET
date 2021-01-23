@@ -1,21 +1,30 @@
-﻿@model Plane 
-
-<form asp-controller="AddPlane" asp-action="AddPlane" method="post" class="addForm">
-    <h1>Add new plane</h1>
-    <div>
-        <label>Name</label>
-        <input class="input-label" asp-for="Name" />
-        <span class="requiredError" asp-validation-for="Name"></span>
+﻿@model Plane
+    <div class="bg-image">
     </div>
-    <div>
-        <label>Seats</label>
-        <input class="input-label" asp-for="Seats" />
-        <span class="requiredError" asp-validation-for="Seats"></span>
+    <div class="shadowBox">
+        <div class="container-fluid">
+            <div class="text-center">
+                <div class="box1">
+                    <form asp-controller="AddPlane" asp-action="AddPlane" method="post" class="addForm text-white">
+                        <h1>Add new plane</h1>
+                        <div>
+                            <label>Name</label>
+                            <input class="input-label" asp-for="Name" />
+                            <span class="requiredError" asp-validation-for="Name"></span>
+                        </div>
+                        <div>
+                            <label>Seats</label>
+                            <input class="input-label" asp-for="Seats" />
+                            <span class="requiredError" asp-validation-for="Seats"></span>
+                        </div>
+                        <div>
+                            <label>Crew</label>
+                            <input class="input-label" asp-for="Crew" />
+                            <span class="requiredError" asp-validation-for="Crew"></span>
+                        </div>
+                        <input type="submit" value="Add" class="submitButton" />
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Crew</label>
-        <input class="input-label" asp-for="Crew" />
-        <span class="requiredError" asp-validation-for="Crew"></span>
-    </div>
-    <input type="submit" value="Add" class="submitButton" />
-</form>

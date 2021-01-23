@@ -34,9 +34,20 @@
 
 .box1 {
     margin: auto;
-    color: black;
-    font-weight: bold;
-    font-size: 150%;
+    align-items: center;
+}
+
+.shadowBox {
+    margin: auto;
+    align-items: center;
+    background: rgb(95, 117, 203,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    min-width: 600px;
+}
+
+.editBox {
+    width: 400px;
+    margin: auto;
 }
 bigger {
     font-size: 150%;

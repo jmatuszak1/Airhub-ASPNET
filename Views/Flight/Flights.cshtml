@@ -1,49 +1,59 @@
 @model IEnumerable<Airhub.Models.Flight>
+    <div class="bg-image">
+    </div>
 
-@{
-    ViewData["Title"] = "Flights";
-}
-﻿
-<form asp-action="FindFlightsByDepartureAirport" method="post" class="flightSearchingForm">
-    @Html.Label("Departure airport")
-    @Html.TextBox("departureAirport", "", new { @class = "input-label" })
-    @*<label>Departure airport</label>*@
-    @*<input class="input-label" type="text" name="departureAirport"/>*@
-    <input type="submit" value="Search" />
-</form>
+        @{
+            ViewData["Title"] = "Flights";
+        }
+        ﻿
+        <form asp-action="FindFlightsByDepartureAirport" method="post" class="flightSearchingForm text-white">
+            @Html.Label("Departure airport")
+            @Html.TextBox("departureAirport", "", new { @class = "input-label" })
+            @*<label>Departure airport</label>*@
+            @*<input class="input-label" type="text" name="departureAirport"/>*@
+            <input type="submit" value="Search" />
+        </form>
 
-<form asp-action="FindFlightsByArrivalAirport" method="post" class="flightSearchingForm">
-    @Html.Label("Arrival airport")
-    @Html.TextBox("arrivalAirport", "", new { @class = "input-label" })
-    <input type="submit" value="Search" />
-</form>
+        <form asp-action="FindFlightsByArrivalAirport" method="post" class="flightSearchingForm text-white">
+            @Html.Label("Arrival airport")
+            @Html.TextBox("arrivalAirport", "", new { @class = "input-label" })
+            <input type="submit" value="Search" />
+        </form>
 
-<form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm">
-    @Html.Label("From Departure Date")
-    @Html.TextBox("departureDate", "", new { @type = "date", @class = "input-label" })
-    <input type="submit" value="Search" />
-</form>
+        <form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm text-white">
+            @Html.Label("From Departure Date")
+            @Html.TextBox("departureDate", "", new { @type = "date", @class = "input-label" })
+            <input type="submit" value="Search" />
+        </form>
 
-<h1>Flights</h1>
+        <div class="shadowBox">
+            <div class="container-fluid">
+                <div class="text-center  text-white">
+                    <h1>Flights</h1>
 
-<table class="table">
+                    <table class="table  text-white">
 
-    <tr>
-        <td>Id</td>
-        <td>Departure Airport</td>
-        <td>Arrival Airport</td>
-        <td>Departure Date</td>
-        <td>Arrival Date</td>
-    </tr>
+                        <tr>
+                            <td>Id</td>
+                            <td>Departure Airport</td>
+                            <td>Arrival Airport</td>
+                            <td>Departure Date</td>
+                            <td>Arrival Date</td>
+                        </tr>
 
-    @foreach (var flight in Model)
-    {
-        <tr>
-            <td>@flight.Id</td>
-            <td>@flight.DepartureAirport.Name</td>
-            <td>@flight.ArrivalAirport.Name</td>
-            <td>@flight.DepartureDate</td>
-            <td>@flight.ArrivalDate</td>
-        </tr>
-    }
-</table>
+                        @foreach (var flight in Model)
+                        {
+                            <tr>
+                                <td>@flight.Id</td>
+                                <td>@flight.DepartureAirport.Name</td>
+                                <td>@flight.ArrivalAirport.Name</td>
+                                <td>@flight.DepartureDate</td>
+                                <td>@flight.ArrivalDate</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

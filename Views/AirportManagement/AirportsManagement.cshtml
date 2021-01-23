@@ -1,35 +1,45 @@
-﻿<form asp-action="AddAirport" method="post" class="addForm">
-    <h1>Add new airport</h1>
-    <div>
-        <label>Name</label>
-        <input class="input-label" type="text" name="name" />
+﻿<div class="bg-image">
+</div>
+
+    <form asp-action="AddAirport" method="post" class="addForm text-white">
+        <h1>Add new airport</h1>
+        <div>
+            <label>Name</label>
+            <input class="input-label" type="text" name="name" />
+        </div>
+        <div>
+            <label>City</label>
+            <input class="input-label" type="text" name="city" />
+        </div>
+        <input type="submit" value="Add" class="submitButton" />
+    </form>
+
+<div class="shadowBox">
+    <div class="container-fluid">
+        <div class="text-center">
+            <div class="box1">
+                <table class="table text-white">
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                        <td>City</td>
+                        <td>Delete</td>
+                    </tr>
+
+                    @foreach (var airport in Model)
+                    {
+                        <tr>
+                            <td>@airport.Id</td>
+                            <td>@airport.Name</td>
+                            <td>@airport.City</td>
+                            <td>
+                                <a class="btn btn-danger" asp-controller="AirportManagement" asp-action="deleteAirport"
+                                    asp-route-id="@airport.Id">🗑️</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>City</label>
-        <input class="input-label" type="text" name="city" />
-    </div>
-    <input type="submit" value="Add" class="submitButton" />
-</form>
-
-
-<table class="table">
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>City</td>
-        <td>Delete</td>
-    </tr>
-
-    @foreach (var airport in Model)
-    {
-        <tr>
-            <td>@airport.Id</td>
-            <td>@airport.Name</td>
-            <td>@airport.City</td>
-            <td>
-                <a class="btn btn-danger" asp-controller="AirportManagement" asp-action="deleteAirport"
-                   asp-route-id="@airport.Id">🗑️</a>
-            </td>
-        </tr>
-    }
-</table>
+</div>
