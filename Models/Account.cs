@@ -17,5 +17,7 @@ namespace Airhub.Models
         [Required, MinLength(6)]
         [Display(Name = "Hasło")]
         public int Password { get; set; }
+
+        public User User { get; set; }
     }
 }

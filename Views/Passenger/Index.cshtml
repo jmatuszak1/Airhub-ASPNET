@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Airhub.Models.Passenger>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="bg-image">
+</div>
+<div class="box">
+    <div class="box1">
+        <div class="container-fluid">
+            <p>
+                <a asp-action="Create">Reserve new Flight</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.DepartureAirport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.ArrivalAirport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.DepartureDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.ArrivalDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Seat)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.Raw(item.Flight.DepartureAirport.Name)
+                            </td>
+                            <td>
+                                @Html.Raw(item.Flight.ArrivalAirport.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.DepartureDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.ArrivalDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Seat)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+
+                            <td>
+                                |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete reservation</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    
+
