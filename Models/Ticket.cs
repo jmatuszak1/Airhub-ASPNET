@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 
 namespace Airhub.Models
 {
-    public class Passenger
+    public class Ticket
     {
         public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        public double Price { get; set; }
+        public int MyProperty { get; set; }
 
         public int FlightId { get; set; }
         public Flight Flight { get; set; }
-        public int Seat { get; set; }
-        public int Price { get; set; } = 500;
+
+        public int Passenger { get; set; }
+        public Flight PassengerId { get; set; }
 
     }
 }

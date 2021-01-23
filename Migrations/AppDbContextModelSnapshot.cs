@@ -65,6 +65,9 @@ namespace Airhub.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
@@ -86,6 +89,9 @@ namespace Airhub.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId")
+                        .IsUnique();
 
                     b.ToTable("Customers");
                 });
@@ -139,8 +145,16 @@ namespace Airhub.Migrations
                     b.Property<int>("FlightId")
                         .HasColumnType("int");
 
+<<<<<<< HEAD
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+=======
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seat")
+                        .HasColumnType("int");
+>>>>>>> ad848ae33fe4964b1b90575680044be6ea85c088
 
                     b.HasKey("Id");
 
@@ -160,6 +174,9 @@ namespace Airhub.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("Crew")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -173,6 +190,7 @@ namespace Airhub.Migrations
                     b.ToTable("Planes");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Airhub.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -385,6 +403,17 @@ namespace Airhub.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+=======
+            modelBuilder.Entity("Airhub.Models.Customer", b =>
+                {
+                    b.HasOne("Airhub.Models.Account", "Account")
+                        .WithOne("Customer")
+                        .HasForeignKey("Airhub.Models.Customer", "AccountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+>>>>>>> ad848ae33fe4964b1b90575680044be6ea85c088
                 });
 
             modelBuilder.Entity("Airhub.Models.Flight", b =>
@@ -437,6 +466,7 @@ namespace Airhub.Migrations
                     b.Navigation("Flight");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -486,6 +516,11 @@ namespace Airhub.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+=======
+            modelBuilder.Entity("Airhub.Models.Account", b =>
+                {
+                    b.Navigation("Customer");
+>>>>>>> ad848ae33fe4964b1b90575680044be6ea85c088
                 });
 
             modelBuilder.Entity("Airhub.Models.Airport", b =>

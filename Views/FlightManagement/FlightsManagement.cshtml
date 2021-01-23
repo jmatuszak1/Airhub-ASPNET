@@ -1,4 +1,12 @@
-﻿<form asp-action="AddFlight" method="post" class="addForm">
+﻿<div class="redirectButtonToAddElementDiv">
+    <a href="addFlight/addFlight">
+        <button class="redirectButtonToAddElement">
+            Add New Flight
+        </button>
+    </a>
+</div>
+
+<form asp-action="AddFlight" method="post" class="addForm">
     <h1>Add new flight</h1>
 
     <div>
@@ -34,6 +42,7 @@
     <div>
         <label>Seats</label>
         <input class="input-label" type="text" name="seats" />
+        <span></span>
     </div>
 
     <div>

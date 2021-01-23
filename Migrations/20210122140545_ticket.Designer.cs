@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airhub.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210121192531_Example")]
-    partial class Example
+    [Migration("20210122140545_ticket")]
+    partial class ticket
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,9 @@ namespace Airhub.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
@@ -89,6 +92,9 @@ namespace Airhub.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
                     b.ToTable("Customers");
                 });
 
@@ -110,6 +116,9 @@ namespace Airhub.Migrations
 
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("MaxSeats")
+                        .HasColumnType("int");
 
                     b.Property<int>("OccupiedSeats")
                         .HasColumnType("int");
@@ -170,6 +179,17 @@ namespace Airhub.Migrations
                     b.ToTable("Planes");
                 });
 
+            modelBuilder.Entity("Airhub.Models.Customer", b =>
+                {
+                    b.HasOne("Airhub.Models.Account", "Account")
+                        .WithOne("Customer")
+                        .HasForeignKey("Airhub.Models.Customer", "AccountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
             modelBuilder.Entity("Airhub.Models.Flight", b =>
                 {
                     b.HasOne("Airhub.Models.Airport", "ArrivalAirport")
@@ -213,6 +233,11 @@ namespace Airhub.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Flight");
+                });
+
+            modelBuilder.Entity("Airhub.Models.Account", b =>
+                {
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Airhub.Models.Airport", b =>

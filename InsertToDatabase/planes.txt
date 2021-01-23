@@ -3,15 +3,16 @@ GO
 
 INSERT INTO [dbo].[Planes]
            ([Name]
-           ,[Seats])
+		,[Crew]
+           ,[Seats])			
      VALUES
-           ('Boeing 247', 190),
-		   ('Douglas DC-3', 100),
-		   ('Douglas DC-6', 285),
-		   ('Boeing 377', 160),
-		   ('Vickers Viscount', 220),
-		   ('Lockheed Constellation', 240),
-		   ('Antonov An-2', 190),
-		   ('De Havilland Comet', 200),
-		   ('Tupolev Tu-104', 215);
+           ('Boeing 247', 5, 190),
+		   ('Douglas DC-3', 3, 100),
+		   ('Douglas DC-6', 9, 285),
+		   ('Boeing 377', 4, 160),
+		   ('Vickers Viscount', 6, 220),
+		   ('Lockheed Constellation', 7, 240),
+		   ('Antonov An-2', 6, 190),
+		   ('De Havilland Comet', 7, 200),
+		   ('Tupolev Tu-104', 8, 215);
 GO
