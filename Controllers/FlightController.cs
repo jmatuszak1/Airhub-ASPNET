@@ -45,11 +45,16 @@ namespace Airhub.Controllers
                 .Include(b => b.Plane)
                 .ToList();
 
-            var flightsByDepartureAirport = from flight in flights
-                where flight.DepartureAirport.Name == departureAirport
-                select flight;
+            var flightsByDepartureAirport = GetFlightsByDepartureAirport(flights, departureAirport);
 
-            return View("Flights", flightsByDepartureAirport.ToList());
+            return View("Flights", flightsByDepartureAirport);
+        }
+
+        public List<Flight> GetFlightsByDepartureAirport(List<Flight> flights, string departureAirport)
+        {
+            return (from flight in flights
+                where flight.DepartureAirport.Name == departureAirport
+                select flight).ToList();
         }
 
         [HttpPost]
@@ -61,13 +66,18 @@ namespace Airhub.Controllers
                 .Include(b => b.Plane)
                 .ToList();
 
-            var flightsByArrivalAirport = from flight in flights
-                where flight.ArrivalAirport.Name == arrivalAirport
-                select flight;
+            var flightsByArrivalAirport = GetFlightsByArrivalAirport(flights, arrivalAirport);
 
-            return View("Flights", flightsByArrivalAirport.ToList());
+            return View("Flights", flightsByArrivalAirport);
         }
-        
+
+        public List<Flight> GetFlightsByArrivalAirport(List<Flight> flights, string arrivalAirport)
+        {
+            return (from flight in flights
+                where flight.ArrivalAirport.Name == arrivalAirport
+                select flight).ToList();
+        }
+
         [HttpPost]
         public ViewResult FindFlightsByDepartureDate(string departureDate)
         {
@@ -79,10 +89,15 @@ namespace Airhub.Controllers
                 .Include(b => b.DepartureAirport)
                 .Include(b => b.Plane)
                 .ToList();
-            var flightsByDepartureDateGreaterThan = from flight in flights
-                where flight.DepartureDate >  departureDateTime
-                select flight;
-            return View("Flights", flightsByDepartureDateGreaterThan.ToList());
+            var flightsByDepartureDateGreaterThan = GetflightsByDepartureDateGreaterThan(flights, departureDateTime);
+            return View("Flights", flightsByDepartureDateGreaterThan);
+        }
+
+        public List<Flight> GetflightsByDepartureDateGreaterThan(List<Flight> flights, DateTime departureDateTime)
+        {
+            return (from flight in flights
+                where flight.DepartureDate > departureDateTime
+                    select flight).ToList();
         }
     }
 }
