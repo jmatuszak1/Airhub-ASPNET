@@ -42,15 +42,6 @@ namespace Airhub.Controllers
             return RedirectToAction("PlanesManagement", _context.Planes.Find(Id));
         }
 
-        [HttpPost]
-        public ActionResult AddPlane(string name, int seats)
-        {
-            var plane = new Plane(name, seats);
-           _context.Add<Plane>(plane);
-            _context.SaveChanges();
-           return RedirectToAction("PlanesManagement");
-        }
-
         [Route("errorPlaneConstraint")]
         public ViewResult ErrorPlaneConstraint(Plane? plane)
         {

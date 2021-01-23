@@ -59,7 +59,8 @@ namespace Airhub.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    Seats = table.Column<int>(type: "int", nullable: false)
+                    Seats = table.Column<int>(type: "int", nullable: false),
+                    Crew = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -4,6 +4,7 @@ using Airhub.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Airhub.ViewModel;
 
 namespace Airhub.Controllers
 {
@@ -28,6 +29,10 @@ namespace Airhub.Controllers
                 .Include(a => a.ArrivalAirport)
                 .Include(b => b.DepartureAirport)
                 .Include(b => b.Plane);
+            var viewModel = new AddFlightViewModel()
+            {
+                Flights = flights.ToList()
+            };
             return View(flights);
         }
 
