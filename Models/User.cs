@@ -5,6 +5,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Airhub.Models
 {
+    public enum Gender
+    {
+        Male,
+        Female,
+        Other
+    }
+
     public class User : IdentityUser
     {
         

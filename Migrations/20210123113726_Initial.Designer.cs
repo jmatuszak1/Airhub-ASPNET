@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airhub.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210123093101_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210123113726_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,11 +31,16 @@ namespace Airhub.Migrations
                     b.Property<int>("Password")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Accounts");
                 });
@@ -58,38 +63,6 @@ namespace Airhub.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Airports");
-                });
-
-            modelBuilder.Entity("Airhub.Models.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DocumentNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Airhub.Models.Flight", b =>
@@ -135,22 +108,26 @@ namespace Airhub.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FlightId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seat")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("FlightId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Passengers");
                 });
@@ -161,6 +138,9 @@ namespace Airhub.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("Crew")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -389,6 +369,16 @@ namespace Airhub.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Airhub.Models.Account", b =>
+                {
+                    b.HasOne("Airhub.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Airhub.Models.Flight", b =>
                 {
                     b.HasOne("Airhub.Models.Airport", "ArrivalAirport")
@@ -417,26 +407,20 @@ namespace Airhub.Migrations
 
             modelBuilder.Entity("Airhub.Models.Passenger", b =>
                 {
-                    b.HasOne("Airhub.Models.Customer", "Customer")
-                        .WithMany("UserFlights")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Airhub.Models.Flight", "Flight")
                         .WithMany("Passengers")
                         .HasForeignKey("FlightId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Airhub.Models.User", null)
+                    b.HasOne("Airhub.Models.User", "User")
                         .WithMany("UserFlights")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("Customer");
-
                     b.Navigation("Flight");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -495,11 +479,6 @@ namespace Airhub.Migrations
                     b.Navigation("Arrivals");
 
                     b.Navigation("Departures");
-                });
-
-            modelBuilder.Entity("Airhub.Models.Customer", b =>
-                {
-                    b.Navigation("UserFlights");
                 });
 
             modelBuilder.Entity("Airhub.Models.Flight", b =>

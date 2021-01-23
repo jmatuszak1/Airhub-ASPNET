@@ -8,8 +8,8 @@ namespace Airhub.Models
     public class Passenger
     {
         public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
 
         public int FlightId { get; set; }
         public Flight Flight { get; set; }

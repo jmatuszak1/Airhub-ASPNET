@@ -1,14 +1,13 @@
-﻿@model Airhub.Models.Customer
-    <div class="bg-image">
-    </div>
+﻿@model Airhub.Models.User
+
     <div class="box">
-        <div class="text-center text-white">
-            <div class="container-fluid">
+        <div class="text-white">
+            <div class="container-fluid>
                 <h1>Edit Personal Data</h1>
                 <hr />
                 <div class="row">
                     <div class="box1">
-                        <form asp-action="Edit">
+                        <form asp-action="Edit" class="text-primary">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input type="hidden" asp-for="Id" />
                             <div class="form-group">
@@ -54,7 +53,6 @@
             </div>
         </div>
 
-
-                @section Scripts {
-                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-                }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

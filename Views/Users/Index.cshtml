@@ -1,4 +1,4 @@
-﻿@model Airhub.Models.Customer
+﻿@model Airhub.Models.User
     <div class="bg-image">
     </div>
     <div class="box">
@@ -51,7 +51,7 @@
                     </dl>
                 </div>
                 <div class="bigger">
-                    <big> <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></big>
+                    <big> <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a></big>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@ namespace Airhub.Data
         //protected override void OnConfiguring(DbContextOptionsBuilder options)
         //    => options.UseSqlite("Data Source=airhub.db");
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<User> Customers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Plane> Planes { get; set; }
