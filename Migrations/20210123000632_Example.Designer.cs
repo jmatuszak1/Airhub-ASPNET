@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airhub.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210119215328_Example")]
+    [Migration("20210123000632_Example")]
     partial class Example
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,9 +111,6 @@ namespace Airhub.Migrations
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MaxSeats")
-                        .HasColumnType("int");
-
                     b.Property<int>("OccupiedSeats")
                         .HasColumnType("int");
 
@@ -159,6 +156,9 @@ namespace Airhub.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("Crew")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

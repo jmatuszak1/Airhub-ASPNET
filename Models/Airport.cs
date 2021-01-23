@@ -21,5 +21,15 @@ namespace Airhub.Models
 
         [InverseProperty("ArrivalAirport")]
         public IList<Flight> Arrivals { get; set; }
+
+        public Airport()
+        {
+        }
+
+        public Airport(string name, string city)
+        {
+            Name = name;
+            City = city;
+        }
     }
 }

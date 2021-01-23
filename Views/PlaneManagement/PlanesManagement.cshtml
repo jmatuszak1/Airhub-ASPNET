@@ -1,38 +1,31 @@
-﻿
-
-<form asp-action="AddPlane" method="post" class="addForm">
-    <h1>Add new plane</h1>
-    <div>
-        <label>Name</label>
-        <input class="input-label" type="text" name="name" />
-    </div>
-    <div>
-        <label>Seats</label>
-        <input class="input-label" type="text" name="seats" />
-    </div>
-    <input type="submit" value="Add" class="submitButton" />
-</form>
-
+﻿<div class="redirectButtonToAddElementDiv">
+    <a href="addPlane/addPlane">
+        <button class="redirectButtonToAddElement">
+            Add New Plane
+        </button>
+    </a>
+</div>
 
 <table class="table">
     <tr>
         <td>Id</td>
         <td>Name</td>
         <td>Seats</td>
+        <td>CrewRequired</td>
         <td>Delete</td>
     </tr>
 
     @foreach (var plane in Model)
-    {
-        <tr>
-            <td>@plane.Id</td>
-            <td>@plane.Name</td>
-            <td>@plane.Seats</td>
-            <td>
-                <a class="btn btn-danger" asp-controller="PlaneManagement" asp-action="deletePlane"
-                   asp-route-id="@plane.Id">🗑️</a>
-                @*<input type="button" value="Delete" onclick="deletePlane(planeId)"/>*@
-            </td>
-        </tr>
-    }
+        {
+            <tr>
+                <td>@plane.Id</td>
+                <td>@plane.Name</td>
+                <td>@plane.Seats</td>
+                <td>@plane.Crew</td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="PlaneManagement" asp-action="deletePlane"
+                       asp-route-id="@plane.Id">🗑️</a>
+                </td>
+            </tr>
+        }
 </table>

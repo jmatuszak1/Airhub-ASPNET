@@ -30,10 +30,6 @@ namespace Airhub.Models
         public DateTime ArrivalDate { get; set; }
 
         [Range(0, 300)]
-        [Display(Name = "Liczba miejsc")]
-        public int MaxSeats { get; set; }
-
-        [Range(0, 300)]
         [Display(Name = "Liczba wolnych miejsc")]
         public int OccupiedSeats { get; set; }
 
@@ -46,5 +42,19 @@ namespace Airhub.Models
         }
 
         public IList<Passenger> Passengers { get; set; }
+
+        public Flight()
+        {
+        }
+
+        public Flight(Airport departureAirport, Airport arrivalAirport, DateTime departureDate, DateTime arrivalDate, int occupiedSeats, Plane plane)
+        {
+            DepartureAirport = departureAirport;
+            ArrivalAirport = arrivalAirport;
+            DepartureDate = departureDate;
+            ArrivalDate = arrivalDate;
+            OccupiedSeats = occupiedSeats;
+            Plane = plane;
+        }
     }
 }

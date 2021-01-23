@@ -24,8 +24,6 @@
         <td>Arrival Airport</td>
         <td>Departure Date</td>
         <td>Arrival Date</td>
-        <td>Max Seats</td>
-        <td>Occupied Seats</td>
     </tr>
 
     @foreach (var flight in Model)
@@ -36,8 +34,6 @@
             <td>@flight.ArrivalAirport.Name</td>
             <td>@flight.DepartureDate</td>
             <td>@flight.ArrivalDate</td>
-            <td>@flight.MaxSeats</td>
-            <td>@flight.OccupiedSeats</td>
         </tr>
     }
 </table>

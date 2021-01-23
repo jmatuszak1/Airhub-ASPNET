@@ -1,0 +1,92 @@
+﻿<div class="redirectButtonToAddElementDiv">
+    <a href="addFlight/addFlight">
+        <button class="redirectButtonToAddElement">
+            Add New Flight
+        </button>
+    </a>
+</div>
+
+<form asp-action="AddFlight" method="post" class="addForm">
+    <h1>Add new flight</h1>
+
+    <div>
+        <label>Departure Airport</label>
+        <select name="departureAirportId" class="input-label">
+            @foreach (var flight in Model)
+            {
+                <option value="@flight.DepartureAirport.Id">@flight.DepartureAirport.Name</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Arrival Airport</label>
+        <select name="arrivalAirportId" class="input-label">
+            @foreach (var flight in Model)
+            {
+            <option type="text"  value="@flight.ArrivalAirport.Id">@flight.ArrivalAirport.Name</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Departure Date</label>
+        <input class="input-label" type="date" name="departureDate" />
+    </div>
+
+    <div>
+        <label>Arrival Date</label>
+        <input class="input-label" type="date" name="arrivalDate" />
+    </div>
+
+    <div>
+        <label>Seats</label>
+        <input class="input-label" type="text" name="seats" />
+        <span></span>
+    </div>
+
+    <div>
+        <label>Plane Id</label>
+        <select name="planeId" class="input-label">
+            @foreach (var flight in Model)
+            {
+                <option type="text"  value="@flight.Plane.Id">@flight.Plane.Name</option>
+            }
+        </select>
+    </div>
+
+
+    <input type="submit" value="Add" class="submitButton" />
+</form>
+
+<table class="table">
+    <tr>
+        <td>Id</td>
+        <td>Departure Airport</td>
+        <td>Arrival Airport</td>
+        <td>Departure Date</td>
+        <td>Arrival Date</td>
+        <td>Occupied Seats</td>
+        <td>Max Seats</td>
+        <td>Plane Name</td>
+        <td>Delete flight</td>
+    </tr>
+
+    @foreach (var flight in Model)
+    {
+<tr>
+    <td>@flight.Id</td>
+    <td>@flight.DepartureAirport.Name</td>
+    <td>@flight.ArrivalAirport.Name</td>
+    <td>@flight.DepartureDate</td>
+    <td>@flight.ArrivalDate</td>
+    <td>@flight.OccupiedSeats</td>
+    <td>@flight.Plane.Seats</td>
+    <td>@flight.Plane.Name</td>
+    <td>
+        <a class="btn btn-danger" asp-controller="FlightManagement" asp-action="deleteFlight"
+           asp-route-id="@flight.Id">🗑️</a>
+    </td>
+</tr>
+    }
+</table>

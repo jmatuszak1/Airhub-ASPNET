@@ -30,7 +30,8 @@ namespace Airhub.Controllers
         {
             var flights = _context.Flights
                 .Include(a => a.ArrivalAirport)
-                .Include(b => b.DepartureAirport);
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             return View(flights);
         }
 
@@ -39,7 +40,8 @@ namespace Airhub.Controllers
         {
             var flights = _context.Flights.Where(a => a.DepartureAirport.Name == departureAirport)
                 .Include(a => a.ArrivalAirport)
-                .Include(b => b.DepartureAirport);
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             return View("Flights", flights);
         }
 
@@ -48,7 +50,8 @@ namespace Airhub.Controllers
         {
             var flights = _context.Flights.Where(a => a.ArrivalAirport.Name == arrivalAirport)
                 .Include(a => a.ArrivalAirport)
-                .Include(b => b.DepartureAirport);
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             return View("Flights", flights);
         }
         
@@ -60,7 +63,8 @@ namespace Airhub.Controllers
                 Int32.Parse(words[2]));
             var flights = _context.Flights
                 .Include(a => a.ArrivalAirport)
-                .Include(b => b.DepartureAirport);
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             var filteredFlights = new Collection();
             foreach (var flight in flights)
             {

@@ -25,6 +25,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Pages\" />
+    <Folder Include="Validator\" />
   </ItemGroup>
 
 </Project>

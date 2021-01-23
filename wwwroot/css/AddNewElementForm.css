@@ -22,3 +22,22 @@
 .submitButton {
     width: 80px;
 }
+
+.redirectButtonToAddElementDiv {
+    text-align: center
+}
+
+.redirectButtonToAddElementDiv a button {
+    padding: 15px;
+    text-align: center;
+    color: black;
+    background-color: greenyellow;
+    font-weight: bolder;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.requiredError {
+    color: red;
+    display: block;
+}
