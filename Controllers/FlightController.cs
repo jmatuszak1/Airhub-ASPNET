@@ -7,6 +7,7 @@ using Airhub.Data;
 using Airhub.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.VisualBasic;
 
 namespace Airhub.Controllers
@@ -38,44 +39,50 @@ namespace Airhub.Controllers
         [HttpPost]
         public ViewResult FindFlightsByDepartureAirport(string departureAirport)
         {
-            var flights = _context.Flights.Where(a => a.DepartureAirport.Name == departureAirport)
+            var flights = _context.Flights
                 .Include(a => a.ArrivalAirport)
                 .Include(b => b.DepartureAirport)
-                .Include(b => b.Plane);
-            return View("Flights", flights);
+                .Include(b => b.Plane)
+                .ToList();
+
+            var flightsByDepartureAirport = from flight in flights
+                where flight.DepartureAirport.Name == departureAirport
+                select flight;
+
+            return View("Flights", flightsByDepartureAirport.ToList());
         }
 
         [HttpPost]
         public ViewResult FindFlightsByArrivalAirport(string arrivalAirport)
         {
-            var flights = _context.Flights.Where(a => a.ArrivalAirport.Name == arrivalAirport)
+            var flights = _context.Flights
                 .Include(a => a.ArrivalAirport)
                 .Include(b => b.DepartureAirport)
-                .Include(b => b.Plane);
-            return View("Flights", flights);
+                .Include(b => b.Plane)
+                .ToList();
+
+            var flightsByArrivalAirport = from flight in flights
+                where flight.ArrivalAirport.Name == arrivalAirport
+                select flight;
+
+            return View("Flights", flightsByArrivalAirport.ToList());
         }
         
         [HttpPost]
         public ViewResult FindFlightsByDepartureDate(string departureDate)
         {
             string[] words = departureDate.Split('-');
-            DateTime departureDateTime = new DateTime(Int32.Parse(words[0]), Int32.Parse(words[1]), 
+            DateTime departureDateTime = new DateTime(Int32.Parse(words[0]), Int32.Parse(words[1]),
                 Int32.Parse(words[2]));
             var flights = _context.Flights
                 .Include(a => a.ArrivalAirport)
                 .Include(b => b.DepartureAirport)
-                .Include(b => b.Plane);
-            var filteredFlights = new Collection();
-            foreach (var flight in flights)
-            {
-                if (flight.DepartureDate.Year == departureDateTime.Year 
-                    && flight.DepartureDate.Month == departureDateTime.Month
-                    && flight.DepartureDate.Day == departureDateTime.Day)
-                {
-                    filteredFlights.Add(flight);
-                }
-            }
-            return View("Flights", filteredFlights);
+                .Include(b => b.Plane)
+                .ToList();
+            var flightsByDepartureDateGreaterThan = from flight in flights
+                where flight.DepartureDate >  departureDateTime
+                select flight;
+            return View("Flights", flightsByDepartureDateGreaterThan.ToList());
         }
     }
 }

@@ -1,18 +1,20 @@
 ﻿
 <form asp-action="FindFlightsByDepartureAirport" method="post" class="flightSearchingForm">
     <label>Departure airport</label>
-    <input class="input-label" type="text" name="departureAirport"/>
+    @Html.TextBox("departureAirport", "", new { @class = "input-label" })
+    @*<input class="input-label" type="text" name="departureAirport"/>*@
     <input type="submit" value="Search"/>
 </form>
 
 <form asp-action="FindFlightsByArrivalAirport" method="post" class="flightSearchingForm">
     <label>Arrival airport</label>
-    <input class="input-label" type="text" name="arrivalAirport"/>
+    @Html.TextBox("arrivalAirport", "", new { @class = "input-label" })
+    @*<input class="input-label" type="text" name="arrivalAirport" />*@
     <input type="submit" value="Search" />
 </form>
 
 <form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm">
-    <label>Departure Date</label>
+    <label>From Departure Date</label>
     <input class="input-label" type="date" name="departureDate" />
     <input type="submit" value="Search" />
 </form>
