@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Airhub.Validation;
-using System.Text;
 
 namespace Airhub.Models
 {
@@ -14,39 +11,31 @@ namespace Airhub.Models
         Female,
         Other
     }
-    public class Customer
-    {
-        public int Id { get; set; }
 
+    public class User : IdentityUser
+    {
+        
         [Required]
         [MaxLength(64)]
-        [Display(Name = "First name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
-        [MaxLength(64)]
-        [Display(Name = "Last name")]
+        [PersonalData]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Date of birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Display(Name = "Gender")]
         public Gender Gender { get; set; }
 
         [Required]
-        [Display(Name = "Document number")]
+        [Display(Name = "Document Number")]
         public string DocumentNumber { get; set; }
 
         public IList<Passenger> UserFlights { get; set; }
-
-        public int AccountId { get; set; }
-        public Account Account { get; set; }
-
-        //public byte[] PasswordHash { get; set; }
-        //public byte[] PasswordSalt { get; set; }
 
     }
 }

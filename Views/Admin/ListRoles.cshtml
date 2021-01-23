@@ -1,0 +1,61 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<h1>All Roles</h1>
+
+@if (Model.Any())
+{
+    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole"
+       asp-controller="Admin">Add new role</a>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Role Name
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>
+                            @role.Name
+                        </td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="EditRole"
+                               asp-route-id="@role.Id" class="btn btn-primary">
+                                Edit
+                            </a>
+                            <a asp-controller="Admin" asp-action="DeleteRole" asp-route-id="@role.Id" method="post" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+}
+else
+{
+
+    <ul class="list-group">
+        <li class="list-group-item">No roles created yet</li>
+        <li class="list-group-item">
+            <h5 class="card-title">
+                Use the button below to create a role
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Admin" asp-action="CreateRole">
+                Create Role
+            </a>
+        </li>
+    </ul>
+}

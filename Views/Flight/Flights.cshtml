@@ -1,23 +1,33 @@
+@model IEnumerable<Airhub.Models.Flight>
+
+@{
+    ViewData["Title"] = "Flights";
+}
 ﻿
 <form asp-action="FindFlightsByDepartureAirport" method="post" class="flightSearchingForm">
-    <label>Departure airport</label>
-    <input class="input-label" type="text" name="departureAirport"/>
-    <input type="submit" value="Search"/>
+    @Html.Label("Departure airport")
+    @Html.TextBox("departureAirport", "", new { @class = "input-label" })
+    @*<label>Departure airport</label>*@
+    @*<input class="input-label" type="text" name="departureAirport"/>*@
+    <input type="submit" value="Search" />
 </form>
 
 <form asp-action="FindFlightsByArrivalAirport" method="post" class="flightSearchingForm">
-    <label>Arrival airport</label>
-    <input class="input-label" type="text" name="arrivalAirport"/>
+    @Html.Label("Arrival airport")
+    @Html.TextBox("arrivalAirport", "", new { @class = "input-label" })
     <input type="submit" value="Search" />
 </form>
 
 <form asp-action="FindFlightsByDepartureDate" method="post" class="flightSearchingForm">
-    <label>Departure Date</label>
-    <input class="input-label" type="date" name="departureDate" />
+    @Html.Label("From Departure Date")
+    @Html.TextBox("departureDate", "", new { @type = "date", @class = "input-label" })
     <input type="submit" value="Search" />
 </form>
 
+<h1>Flights</h1>
+
 <table class="table">
+
     <tr>
         <td>Id</td>
         <td>Departure Airport</td>

@@ -18,6 +18,6 @@ namespace Airhub.Models
         [Display(Name = "Hasło")]
         public int Password { get; set; }
 
-        public Customer Customer { get; set; }
+        public User User { get; set; }
     }
 }
