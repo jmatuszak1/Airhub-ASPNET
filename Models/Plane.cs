@@ -21,5 +21,15 @@ namespace Airhub.Models
         public int Seats { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
+
+        public Plane()
+        {
+        }
+
+        public Plane(string name, int seats)
+        {
+            Name = name;
+            Seats = seats;
+        }
     }
 }

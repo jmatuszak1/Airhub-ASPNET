@@ -52,3 +52,15 @@ footer {
 a {
     text-decoration: none !important;
 }
+
+footer {
+    position: fixed;
+}
+
+table tr {
+    text-align: center;
+}
+
+.table {
+    margin-bottom: 150px;
+}

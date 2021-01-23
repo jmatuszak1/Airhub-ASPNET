@@ -29,26 +29,29 @@ namespace Airhub.Controllers
         public ViewResult Flights(Flight? flight)
         {
             var flights = _context.Flights
-                .Include(a => a.ArrivalCity)
-                .Include(b => b.DepartureCity);
+                .Include(a => a.ArrivalAirport)
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             return View(flights);
         }
 
         [HttpPost]
-        public ViewResult FindFlightsByDepartureCity(string departureCity)
+        public ViewResult FindFlightsByDepartureAirport(string departureAirport)
         {
-            var flights = _context.Flights.Where(a => a.DepartureCity.Name == departureCity)
-                .Include(a => a.ArrivalCity)
-                .Include(b => b.DepartureCity);
+            var flights = _context.Flights.Where(a => a.DepartureAirport.Name == departureAirport)
+                .Include(a => a.ArrivalAirport)
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             return View("Flights", flights);
         }
 
         [HttpPost]
-        public ViewResult FindFlightsByArrivalCity(string arrivalCity)
+        public ViewResult FindFlightsByArrivalAirport(string arrivalAirport)
         {
-            var flights = _context.Flights.Where(a => a.ArrivalCity.Name == arrivalCity)
-                .Include(a => a.ArrivalCity)
-                .Include(b => b.DepartureCity);
+            var flights = _context.Flights.Where(a => a.ArrivalAirport.Name == arrivalAirport)
+                .Include(a => a.ArrivalAirport)
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             return View("Flights", flights);
         }
         
@@ -59,8 +62,9 @@ namespace Airhub.Controllers
             DateTime departureDateTime = new DateTime(Int32.Parse(words[0]), Int32.Parse(words[1]), 
                 Int32.Parse(words[2]));
             var flights = _context.Flights
-                .Include(a => a.ArrivalCity)
-                .Include(b => b.DepartureCity);
+                .Include(a => a.ArrivalAirport)
+                .Include(b => b.DepartureAirport)
+                .Include(b => b.Plane);
             var filteredFlights = new Collection();
             foreach (var flight in flights)
             {
